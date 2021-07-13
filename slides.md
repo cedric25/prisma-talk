@@ -1,23 +1,28 @@
 ---
 # try also 'default' to start simple
 theme: seriph
+
 # random image from a curated Unsplash collection by Anthony
 # like them? see https://unsplash.com/collections/94734566/slidev
 background: https://source.unsplash.com/collection/94734566/1920x1080
+
 # apply any windi css classes to the current slide
 class: 'text-center'
+
 # https://sli.dev/custom/highlighters.html
 highlighter: shiki
+
 # some information about the slides, markdown enabled
 info: |
-  ## Slidev Starter Template
-  Presentation slides for developers.
+  ## LyonJS - Talk sur Prisma 
+  Mercredi 21 juillet 2021
 
-  Learn more at [Sli.dev](https://sli.dev)
+  Par [Cédric Nicoloso](https://cedric.nicoloso.me/)
+
 layout: cover
 ---
 
-# Welcome to LyonJS #68
+# Bienvenue au LyonJS #68
 
 <div class="flex justify-center">
   <img
@@ -32,123 +37,190 @@ layout: cover
   </span>
 </div>
 
-<div class="abs-br m-6 flex gap-2">
-  <button @click="$slidev.nav.openInEditor()" title="Open in Editor" class="text-xl icon-btn opacity-50 !border-none !hover:text-white">
-    <carbon:edit />
-  </button>
-  <a href="https://github.com/slidevjs/slidev" target="_blank" alt="GitHub"
-    class="text-xl icon-btn opacity-50 !border-none !hover:text-white">
-    <carbon-logo-github />
-  </a>
+<!--
+## Et ben, bienvenue à toutes et à tous.  
+
+### On est ravi de pouvoir vous accueillir ici chez Indy pour ce nouveau LyonJS.
+
+### On va attaquer le premier talk...
+### Et je vais prendre une vingtaine de minutes pour vous parler de Prisma.
+-->
+
+
+
+
+
+---
+
+## Prisma
+
+<!--
+(Sondage rapide, qui a déjà entendu parler de Prisma ?)
+-->
+
+
+
+
+
+---
+
+## Prisma, qu'est-ce que c'est ?
+
+<div class="text-xl mt-8">
+  Prisma fait parti de <strong>la famille des ORMs</strong>.
 </div>
 
+<div class="mt-12">
+  <img src="/images/prisma_diagram.svg">
+</div>
 
-<!--
-The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://sli.dev/guide/syntax.html#notes)
--->
+<div v-click class="absolute top-95 left-100">
+  <ul>
+    <li>REST</li>
+    <li>GraphQL</li>
+  </ul>
+</div>
 
----
-
-# What is Slidev?
-
-Slidev is a slides maker and presenter designed for developers, consist of the following features
-
-- 📝 **Text-based** - focus on the content with Markdown, and then style them later
-- 🎨 **Themable** - theme can be shared and used with npm packages
-- 🧑‍💻 **Developer Friendly** - code highlighting, live coding with autocompletion
-- 🤹 **Interactive** - embedding Vue components to enhance your expressions
-- 🎥 **Recording** - built-in recording and camera view
-- 📤 **Portable** - export into PDF, PNGs, or even a hostable SPA
-- 🛠 **Hackable** - anything possible on a webpage
-
-<br>
-<br>
-
-Read more about [Why Slidev?](https://sli.dev/guide/why)
-
-<!--
-You can have `style` tag in markdown to override the style for the current page.
-Learn more: https://sli.dev/guide/syntax#embedded-styles
--->
+<div v-click class="absolute top-95 left-190">
+  <ul>
+    <li>SQLite</li>
+    <li>MySQL</li>
+    <li>PostgreSQL</li>
+    <li>
+      SQL Server <span class="chip">Preview</span>
+    </li>
+    <li>
+      MongoDB <span class="chip">Early Access</span>
+    </li>
+  </ul>
+</div>
 
 <style>
-h1 {
-  background-color: #2B90B6;
-  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
-  background-size: 100%;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent; 
-  -moz-text-fill-color: transparent;
+.chip {
+  color: rgb(160, 174, 192);
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 600;
+  background: rgb(237, 242, 247);
+  border-radius: 5px;
+  padding: 2px 5px;
+}
+.chip.chip-light {
+  color: rgba(160, 174, 192, 0.5);
+  background: rgba(237, 242, 247, 0.2   );
 }
 </style>
 
----
+<!--
+#### En gros il va se placer entre notre code serveur et la base de données, et son rôle ça va être de nous :  
+### → faciliter la vie dans ces interactions avec la base de données.
+-->
 
-# Navigation
 
-Hover on the bottom-left corner to see the navigation's controls panel, [learn more](https://sli.dev/guide/navigation.html)
 
-### Keyboard Shortcuts
 
-|     |     |
-| --- | --- |
-| <kbd>right</kbd> / <kbd>space</kbd>| next animation or slide |
-| <kbd>left</kbd>  / <kbd>shift</kbd><kbd>space</kbd> | previous animation or slide |
-| <kbd>up</kbd> | previous slide |
-| <kbd>down</kbd> | next slide |
-
-<!-- https://sli.dev/guide/animations.html#click-animations -->
-<img
-  v-click
-  class="absolute -bottom-9 -left-7 w-80 opacity-50"
-  src="https://sli.dev/assets/arrow-bottom-left.svg"
-/>
-<p v-after class="absolute bottom-23 left-45 opacity-30 transform -rotate-10">Here!</p>
-
----
-layout: image-right
-image: https://source.unsplash.com/collection/94734566/1920x1080
----
-
-# Code
-
-Use code snippets and get the highlighting directly![^1]
-
-```ts {all|2|1-6|9|all}
-interface User {
-  id: number
-  firstName: string
-  lastName: string
-  role: string
-}
-
-function updateUser(id: number, update: User) {
-  const user = getUser(id)
-  const newUser = {...user, ...update}  
-  saveUser(id, newUser)
-}
-```
-
-<arrow v-click="3" x1="400" y1="420" x2="230" y2="330" color="#564" width="3" arrowSize="1" />
-
-[^1]: [Learn More](https://sli.dev/guide/syntax.html#line-highlighting)
-
-<style>
-.footnotes-sep {
-  @apply mt-20 opacity-10;
-}
-.footnotes {
-  @apply text-sm opacity-75;
-}
-.footnote-backref {
-  display: none;
-}
-</style>
 
 ---
 
-# Components
+## Autres candidats
+
+### Contexte : PostgreSQL
+
+<div grid="~ cols-4 gap-2" class='h-full pt-10 pb-20'>
+
+<div class="flex items-center justify-center border-r">
+  <div>
+    <a href="https://github.com/brianc/node-postgres" target="_blank" class="text-3xl">
+      pg
+    </a>
+    <div class="mt-3">
+      → Le driver natif JS pour PostgreSQL
+    </div>
+  </div>
+</div>
+
+<div class="flex items-center justify-center border-r">
+  <div>
+    <a href="https://github.com/knex/knex" target="_blank" class="text-3xl">
+      knex
+      <img src="https://knexjs.org/assets/favicons/favicon-32x32.png" class="inline-block" style="width: 25px;" />
+    </a>
+    <div class="mt-3">
+      → Un query builder
+    </div>
+    <div class="mt-3">
+      <GithubStars count="14.4k" />
+    </div>
+  </div>
+</div>
+
+<div class="flex flex-col content-center items-end">
+  <div style="width: 150px;">
+    <a href="https://github.com/sequelize/sequelize" target="_blank" class="text-2xl">
+      Sequelize
+      <img src="https://sequelize.org/master/image/brand_logo.png" class="inline-block -mt-2" style="width: 25px;" />
+    </a>
+    <div class="mt-4">
+      <GithubStars count="24.6k" />
+    </div>
+  </div>
+  <div class="mt-10" style="width: 150px;">
+    <a href="https://github.com/typeorm/typeorm" target="_blank" class="text-2xl">
+      TypeORM
+      <img src="/images/github-repos/typeorm-logo.png" class="inline-block -mt-1" style="width: 30px;" />
+    </a>
+    <div class="mt-4">
+      <GithubStars count="24.9k" />
+    </div>
+  </div>
+  <div class="mt-10" style="width: 150px;">
+    <a href="https://github.com/mikro-orm/mikro-orm" target="_blank" class="text-2xl">
+      MikroORM
+      <img src="https://mikro-orm.io/img/favicon.ico" class="inline-block -mt-1" style="width: 22px;" />
+    </a>
+    <div class="mt-4">
+      <GithubStars count="3.3k" />
+    </div>
+  </div>
+</div>
+
+<div class="flex flex-col content-center items-center">
+  <div class="mt-10">
+    <a href="https://github.com/bookshelf/bookshelf" target="_blank">
+      Bookshelf.js
+      <img src="https://avatars.githubusercontent.com/u/4448260?s=200&v=4" class="inline-block -mt-3" style="width: 22px;" />
+    </a>
+    <div class="mt-4">
+      <GithubStars count="6.2k" />
+    </div>
+  </div>
+  <div class="mt-10">
+    <a href="https://github.com/Vincit/objection.js" target="_blank">
+      Objection.js
+    </a>
+    <div class="mt-4">
+      <GithubStars count="6.2k" />
+    </div>
+  </div>
+</div>
+
+</div>
+
+<!--
+### pg : On est au plus proche de la bdd, c'est top, en terme de perfs, etc. Mais on est un peu à poil, à écrire nos requêtes SQL sans auto-complétion dans l'IDE, sans type-checking, etc.
+
+#### knex, l'entre-deux. Des méthodes helpers pour écrire nos requêtes, on se sent un peu plus en sécurité.
+
+#### knex est parfois la base de l'ORM : Objection.js, MikroORM, Bookshelf.js, etc.
+-->
+
+
+
+
+
+---
+
+## Components
 
 <div grid="~ cols-2 gap-4">
   <div>
@@ -179,7 +251,7 @@ function updateUser(id: number, update: User) {
 class: px-20
 ---
 
-# Themes
+## Themes
 
 Slidev comes with powerful theming support. Themes can provide styles, layouts, components, or even configurations for tools. Switching between themes by just **one edit** in your frontmatter:
 
@@ -206,11 +278,15 @@ theme: seriph
 Read more about [How to use a theme](https://sli.dev/themes/use.html) and
 check out the [Awesome Themes Gallery](https://sli.dev/themes/gallery.html).
 
+
+
+
+
 ---
 preload: false
 ---
 
-# Animations
+## Animations
 
 Animations are powered by [@vueuse/motion](https://motion.vueuse.org/).
 
@@ -282,9 +358,13 @@ const final = {
 
 </div>
 
+
+
+
+
 ---
 
-# LaTeX
+## LaTeX
 
 LaTeX is supported out-of-box powered by [KaTeX](https://katex.org/).
 
@@ -310,9 +390,13 @@ $$
 
 [Learn more](https://sli.dev/guide/syntax#latex)
 
+
+
+
+
 ---
 
-# Diagrams
+## Diagrams
 
 You can create diagrams / graphs from textual descriptions, directly in your Markdown.
 
@@ -334,6 +418,9 @@ C -->|Two| E[Result 2]
 </div>
 
 [Learn More](https://sli.dev/guide/syntax.html#diagrams)
+
+
+
 
 
 ---
