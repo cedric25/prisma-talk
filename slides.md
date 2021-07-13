@@ -247,36 +247,104 @@ layout: cover
 </div>
 
 
----
-class: px-20
+
+
+
 ---
 
-## Themes
+## Le schéma
 
-Slidev comes with powerful theming support. Themes can provide styles, layouts, components, or even configurations for tools. Switching between themes by just **one edit** in your frontmatter:
+<div grid="~ cols-2 gap-6" class="mt-4">
 
-<div grid="~ cols-2 gap-2" m="-t-2">
+```js {all|11}
+generator client {
+  provider = "prisma-client-js"
+}
 
-```yaml
----
-theme: default
----
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  user_id        String         @id
+  email          String         @unique
+  first_name     String
+  last_name      String
+  bank_accounts  BankAccount[]
+  roles          String[]
+  created_at     DateTime       @default(now())
+  updated_at     DateTime       @updatedAt
+
+  @@map(name: "users") // Nom de la table en base
+}
 ```
 
-```yaml
----
-theme: seriph
----
+```js {all|11-12}
+
+
+
+
+
+
+
+
+model BankAccount {
+  bank_account_id  String   @id @default(uuid())
+  user_id          String
+  user             User     @relation(fields: [user_id], references: [user_id])
+  number           Int      @default(1)
+  name             String
+  balance_in_cents Int
+  created_at       DateTime @default(now())
+  updated_at       DateTime @updatedAt
+
+  @@unique([user_id, number])
+
+  @@map(name: "bank_accounts")
+}
 ```
-
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-default/01.png?raw=true">
-
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-seriph/01.png?raw=true">
 
 </div>
 
-Read more about [How to use a theme](https://sli.dev/themes/use.html) and
-check out the [Awesome Themes Gallery](https://sli.dev/themes/gallery.html).
+
+
+
+
+---
+
+## Chez TypeORM
+
+### Annotations au-dessus d'attributs de classe
+
+<div class="mt-4">
+
+```js
+@Entity()
+export class User {
+
+  @PrimaryGeneratedColumn("uuid")
+  user_id: number;
+
+  @Column()
+  firstName: string;
+
+  @Column()
+  lastName: string;
+
+  @Column()
+  age: number;
+
+}
+```
+
+</div>
+
+<!--
+### Exemple avec d'autres outils comme TypeORM où on va définir une classe JS / TS dans laquelle on va annoter / décorer les propriétés.
+
+### C'est un peu subjectif mais j'accroche pas trop avec cette notation, les décorateurs en JS ce n'est pas une syntaxe native (il faut se tirer `reflect-metadata` si je me souviens bien), et ça me rappelle peut-être trop Java avec *Hibernate*... 🤷‍♂️
+-->
 
 
 
