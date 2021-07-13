@@ -10,5 +10,8 @@
     "@slidev/cli": "^0.22.4",
     "@slidev/theme-default": "*",
     "@slidev/theme-seriph": "*"
+  },
+  "devDependencies": {
+    "prettier": "2.3.2"
   }
 }
