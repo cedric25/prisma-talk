@@ -51,12 +51,9 @@ layout: cover
 
 
 ---
-
-## Prisma
-
-<!--
-(Sondage rapide, qui a déjà entendu parler de Prisma ?)
--->
+layout: prisma-title
+src: ./slides/prismaTitle.md
+---
 
 
 
@@ -67,7 +64,7 @@ layout: cover
 ## Prisma, qu'est-ce que c'est ?
 
 <div class="text-xl mt-8">
-  Prisma fait parti de <strong>la famille des ORMs</strong>.
+  Prisma fait partie de <strong>la famille des ORMs</strong>.
 </div>
 
 <div class="mt-12">
@@ -219,93 +216,8 @@ layout: cover
 
 
 ---
-
-## Components
-
-<div grid="~ cols-2 gap-4">
-  <div>
-  
-  You can use Vue components directly inside your slides.
-  
-  We have provided a few built-in components like `<Tweet/>` and `<Youtube/>` that you can use directly. And adding your custom components is also super easy.
-  
-  ```html
-  <Counter :count="10" />
-  ```
-  
-  <!-- ./components/Counter.vue -->
-  <Counter :count="10" m="t-4" />
-  
-  Check out [the guides](https://sli.dev/builtin/components.html) for more.
-  
-  </div>
-  <div>
-
-  <Tweet id="1400893865196879873" scale="0.65" />
-
-  </div>
-</div>
-
-
-
-
-
+src: ./slides/prismaSchema.md
 ---
-
-## Le schéma
-
-<div grid="~ cols-2 gap-6" class="mt-4">
-
-```js {all|11}
-generator client {
-  provider = "prisma-client-js"
-}
-
-datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
-}
-
-model User {
-  user_id        String         @id
-  email          String         @unique
-  first_name     String
-  last_name      String
-  bank_accounts  BankAccount[]
-  roles          String[]
-  created_at     DateTime       @default(now())
-  updated_at     DateTime       @updatedAt
-
-  @@map(name: "users") // Nom de la table en base
-}
-```
-
-```js {all|11-12}
-
-
-
-
-
-
-
-
-model BankAccount {
-  bank_account_id  String   @id @default(uuid())
-  user_id          String
-  user             User     @relation(fields: [user_id], references: [user_id])
-  number           Int      @default(1)
-  name             String
-  balance_in_cents Int
-  created_at       DateTime @default(now())
-  updated_at       DateTime @updatedAt
-
-  @@unique([user_id, number])
-
-  @@map(name: "bank_accounts")
-}
-```
-
-</div>
 
 
 
@@ -351,151 +263,234 @@ export class User {
 
 
 ---
-preload: false
+src: ./slides/prismaSchema2.md
 ---
 
-## Animations
 
-Animations are powered by [@vueuse/motion](https://motion.vueuse.org/).
 
-```html
-<div
-  v-motion
-  :initial="{ x: -80 }"
-  :enter="{ x: 0 }">
-  Slidev
+
+
+---
+
+## Les deux fichiers générés
+
+<div grid="~ cols-2 gap-6" class="relative">
+
+<div class="pr-3 border-r">
+
+### index.js
+
+👉 findFirst()  
+👉 findMany()  
+👉 updateOne()  
+👉 etc..
+
+Des fonctions 'helpers' pour formuler des requêtes de base de données qui renvoient toujours des objets JavaScript simples.
+
+(On peut toujours faire du SQL natif si Prisma ne contient pas la méthode qu'on souhaite : `prismaClient.$queryRaw` |
+
 </div>
+<div>
+
+### index.d.ts
+
+Les types TypeScript correspondant à nos modèles.  
+8 tables → 13 000 lignes de TS 🤯
+
+</div>
+</div>
+
+<!--
+#### Des POJOs, contrairement à d'autres ORMs qui ont tendance à renvoyer des instances de modèles.
+
+### $queryRaw : Je l'ai utilisé pour une requête de recherche de texte pour enlever les caractères accentués via un plugin de Postgres...
+#### Mais attention ici on perdra les vérifications de syntaxe.
+-->
+
+
+
+
+
+---
+
+## Intégration du client Prisma
+
+```javascript
+import express from 'express'
+import { PrismaClient } from '@prisma/client'
+
+const prisma = new PrismaClient()
+
+const app = express()
+
+app.get('/posts', async (req, res) => {
+  const posts = await prisma.post.findMany({
+    where: { published: true },
+    include: { author: true },
+  })
+  res.json(posts)
+})
 ```
 
-<div class="w-60 relative mt-6">
-  <div class="relative w-40 h-40">
-    <img
-      v-motion
-      :initial="{ x: 800, y: -100, scale: 1.5, rotate: -50 }"
-      :enter="final"
-      class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-square.png"
-    />
-    <img
-      v-motion
-      :initial="{ y: 500, x: -100, scale: 2 }"
-      :enter="final"
-      class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-circle.png"
-    />
-    <img
-      v-motion
-      :initial="{ x: 600, y: 400, scale: 2, rotate: 100 }"
-      :enter="final"
-      class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-triangle.png"
-    />
-  </div>
+<!--
+### Exemple classique, tiré de la doc de Prisma.
 
-  <div 
-    class="text-5xl absolute top-14 left-40 text-[#2B90B6] -z-1"
-    v-motion
-    :initial="{ x: -80, opacity: 0}"
-    :enter="{ x: 0, opacity: 1, transition: { delay: 2000, duration: 1000 } }">
-    Slidev
-  </div>
-</div>
+#### Bon je comprends que c'est un exemple mais personnellement quand je vois ça j'ai mal aux yeux.
+#### Non on n'interagît pas avec la base depuis un handler de route 🙀
+-->
 
-<!-- vue script setup scripts can be directly used in markdown, and will only affects current page -->
-<script setup lang="ts">
-const final = {
-  x: 0,
-  y: 0,
-  rotate: 0,
-  scale: 1,
-  transition: {
-    type: 'spring',
-    damping: 10,
-    stiffness: 20,
-    mass: 2
+
+
+
+
+---
+
+## On essaye plus propre ?
+
+
+
+<!--
+### Exemple classique, tiré de la doc de Prisma.
+
+#### Bon je comprends que c'est un exemple mais personnellement quand je vois ça j'ai mal aux yeux.
+#### Non on n'interagît pas avec la base depuis un handler de route 🙀
+-->
+
+
+
+
+
+---
+
+## Les tests ?
+
+
+
+
+
+---
+
+## Prisma migrate
+
+plop
+
+
+
+
+
+---
+
+## Prisma studio
+
+plop
+
+
+
+
+
+
+---
+
+## Pourquoi ça m'a plu ?
+
+➕➕ <strong>TypeScript-first.</strong>  
+
+➕➕ <strong>La doc qui balaye large.</strong>  
+On retrouve par exemple un article qui donne les solutions de hosting cloud d'une DB.
+
+➕➕ <strong>Le dynamisme du projet.</strong>  
+Les releases régulières, le Slack de 46,000 personnes, la récente conf' Prisma Day.  
+<span class="text-sm">
+  (Disclaimer: Comme tout outil on ne sait pas si ça sera encore vivant dans 2-3 ans !)
+</span>
+
+<Tweet id="1400893865196879873" scale="0.65" class="mt-7" />
+
+<!--
+### Et pourtant je ne suis pas un fan de la première de TS, mais là il faut bien reconnaître que c'est hyper agréable de bosser avec ça dans l'IDE.
+-->
+
+
+
+
+
+---
+
+## Et ?
+
+<img src="/images/frameworks-using-prisma.png">
+
+👉 &nbsp;https://www.prisma.io/blog/prisma-the-complete-orm-inw24qjeawmb
+
+
+
+
+
+---
+
+## Pour aller plus loin
+
+<ul>
+  <li>
+    <div>Commencer avec Prisma :</div>
+    👉 <a href="https://www.prisma.io/docs/getting-started" target="_blank" class="ml-1">
+      https://www.prisma.io/docs/getting-started
+    </a>
+  </li>
+  <li>
+    <div>(mars 2021) Comparaison de différents ORMs JS / TS :</div>
+    👉 <a href="https://www.sitepoint.com/javascript-typescript-orms/" target="_blank" class="ml-1">
+      https://www.sitepoint.com/javascript-typescript-orms/
+    </a>
+  </li>
+  <li>
+    <div>(avril 2021) Un article qui compare Prisma à TypeORM :</div>
+    👉 <a href="https://javascript.developpez.com/actu/314513/Prisma-un-ORM-de-nouvelle-generation-pour-Node-js-et-TypeScript-pour-concurrencer-TypeORM-et-Sequelize-et-devenir-la-norme-de-l-industrie/" target="_blank" class="ml-1">
+      https://javascript.developpez.com/actu/314513/Prisma-un-ORM-de-nouv...
+    </a>
+  </li>
+  <li>
+    <div>Chaîne Youtube avec présentations des releases</div>
+    👉 <a href="https://www.youtube.com/c/PrismaData" target="_blank" class="ml-1">
+      https://www.youtube.com/c/PrismaData
+    </a>
+  </li>
+</ul>
+
+<style>
+ul li {
+  @apply mb-5;
+
+  div {
+    @apply -mb-2;
+  }
+  a {
+    @apply text-sm;
   }
 }
-</script>
-
-<div
-  v-motion
-  :initial="{ x: 35, y: 40, opacity: 0 }"
-  :enter="{ y: 0, opacity: 1, transition: { delay: 3500 } }">
-
-[Learn More](https://sli.dev/guide/animations.html#motion)
-
-</div>
+</style>
 
 
 
 
 
 ---
-
-## LaTeX
-
-LaTeX is supported out-of-box powered by [KaTeX](https://katex.org/).
-
-<br>
-
-Inline $\sqrt{3x-1}+(1+x)^2$
-
-Block
-$$
-\begin{array}{c}
-
-\nabla \times \vec{\mathbf{B}} -\, \frac1c\, \frac{\partial\vec{\mathbf{E}}}{\partial t} &
-= \frac{4\pi}{c}\vec{\mathbf{j}}    \nabla \cdot \vec{\mathbf{E}} & = 4 \pi \rho \\
-
-\nabla \times \vec{\mathbf{E}}\, +\, \frac1c\, \frac{\partial\vec{\mathbf{B}}}{\partial t} & = \vec{\mathbf{0}} \\
-
-\nabla \cdot \vec{\mathbf{B}} & = 0
-
-\end{array}
-$$
-
-<br>
-
-[Learn more](https://sli.dev/guide/syntax#latex)
-
-
-
-
-
----
-
-## Diagrams
-
-You can create diagrams / graphs from textual descriptions, directly in your Markdown.
-
-<div class="grid grid-cols-2 gap-10 pt-4 -mb-6">
-
-```mermaid {scale: 0.9}
-sequenceDiagram
-    Alice->John: Hello John, how are you?
-    Note over Alice,John: A typical interaction
-```
-
-```mermaid {theme: 'neutral', scale: 0.8}
-graph TD
-B[Text] --> C{Decision}
-C -->|One| D[Result 1]
-C -->|Two| E[Result 2]
-```
-
-</div>
-
-[Learn More](https://sli.dev/guide/syntax.html#diagrams)
-
-
-
-
-
----
-layout: center
 class: text-center
 ---
 
-# Learn More
+## Cédric Nicoloso
 
-[Documentations](https://sli.dev) · [GitHub](https://github.com/slidevjs/slidev) · [Showcases](https://sli.dev/showcases.html)
+<br>
+
+<div class="flex justify-center">
+  <img src="https://avatars.githubusercontent.com/u/4280765" class="w-40 h-40 rounded-full">
+</div>
+
+<br>
+
+https://cedric.nicoloso.me/
+
+<br>
+<br>
+
+Retrouvez ces slides : https://cedric.nicoloso.me/2021-07/prisma-talk

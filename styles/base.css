@@ -1,5 +1,7 @@
 h2 {
-    @apply !text-4xl;
+    @apply mb-4;
+    font-size: 2.25rem !important;
+    line-height: 2.7rem !important;
     background-color: #2B90B6;
     background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
     background-size: 100%;
