@@ -10,3 +10,7 @@ h2 {
     -webkit-text-fill-color: transparent;
     -moz-text-fill-color: transparent;
 }
+
+.slidev-code {
+    font-size: 0.55rem !important;
+}
