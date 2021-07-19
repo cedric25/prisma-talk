@@ -2,7 +2,9 @@
 
 <div grid="~ cols-2 gap-6" class="mt-4">
 
-```js {all|all|11}
+```js {all|all|13}
+# schema.prisma
+
 generator client {
   provider = "prisma-client-js"
 }

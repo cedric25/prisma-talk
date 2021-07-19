@@ -81,7 +81,9 @@ src: ./slides/prismaSchema.md
 
 <div class="mt-4">
 
-```js
+```typescript
+// User.ts
+
 @Entity()
 export class User {
 
@@ -135,9 +137,13 @@ src: ./slides/prismaSchema2.md
 👉 updateOne()  
 👉 etc..
 
-Des fonctions 'helpers' pour formuler des requêtes de base de données qui renvoient toujours des objets JavaScript simples.
+Des fonctions 'helpers' :
+ - Formuler des requêtes de base de données,
+ - Nous renvoient toujours des objets JavaScript simples.
 
-(On peut toujours faire du SQL natif si Prisma ne contient pas la méthode qu'on souhaite : `prismaClient.$queryRaw` |
+<div class="text-sm mt-10">
+(On peut toujours faire du SQL natif si Prisma ne contient pas la méthode qu'on souhaite : `prismaClient.$queryRaw`)
+</div>
 
 </div>
 <div>
@@ -145,7 +151,30 @@ Des fonctions 'helpers' pour formuler des requêtes de base de données qui renv
 ### index.d.ts
 
 Les types TypeScript correspondant à nos modèles.  
-8 tables → 13 000 lignes de TS 🤯
+
+<div class="text-sm mb-2">
+8 tables = 13 000 lignes de TS...
+</div>
+
+```typescript
+async getAccountingSumInCents({
+  userId, firstDate, lastDate
+}: {
+  userId: string; firstDate: Date; lastDate: Date
+}): Promise<
+  Prisma.GetAccountingLineAggregateType<{
+    sum: { amount_in_cents: true }
+  }>
+> {
+    return this.#accountingLine.aggregate({
+      sum: { amount_in_cents: true },
+      where: {
+        user_id: userId,
+        date: { gte: firstDate, lte: lastDate },
+      },
+    })
+}
+```
 
 </div>
 </div>
@@ -199,13 +228,6 @@ app.get('/posts', async (req, res) => {
 
 
 
-<!--
-### Exemple classique, tiré de la doc de Prisma.
-
-#### Bon je comprends que c'est un exemple mais personnellement quand je vois ça j'ai mal aux yeux.
-#### Non on n'interagît pas avec la base depuis un handler de route 🙀
--->
-
 
 
 
@@ -222,7 +244,41 @@ app.get('/posts', async (req, res) => {
 
 ## Prisma migrate
 
-plop
+1. On travaille sur sa feature :
+
+Modifications dans le schema.prisma.
+`prisma db push` && `prisma generate`
+
+2. On est prêt à valider notre feature :
+`prisma migrate dev --name "Ajout de la table authors"`
+
+ -> Nous génère un script de migration :
+```
+server
+ > dist
+ > node_modules
+ > prisma
+     > migrations
+         > 20210715144607_ajout_de_la_table_authors
+             migration.sql
+     schema.prisma
+ > src
+ > test
+   ...
+```
+
+Et pour mettre à jour la base de données de préprod :
+
+`prisma migrate deploy`
+
+```json
+scripts: {
+  "db-preprod-up": "dotenv -e .env.preprod -- npx prisma migrate deploy",
+}
+```
+
+(Insertion d'une ligne dans la table _prisma_migrations)
+
 
 
 
@@ -232,8 +288,36 @@ plop
 
 ## Prisma studio
 
-plop
+`prisma studio`
 
+Une UI "minimaliste" pour explorer la base.
+
+<img src="/images/prisma-studio.png" class="mt-10" style="max-width: 650px;">
+
+<div class="mt-10 text-sm">
+→ Autre option : <a href="https://tableplus.com/" target="_blank">TablePlus</a>
+</div>
+
+<style>
+.ced-link {
+  border-radius: 1.5rem;
+  display: inline-block;
+  transition-property: background-color,border-color,color,fill,stroke;
+  transition-timing-function: cubic-bezier(.4,0,.2,1);
+  transition-duration: 150ms;
+  padding: .7em .9em .7em .9em;
+  border-bottom-width: 0 !important;
+}
+.ced-link:hover {
+  cursor: pointer;
+  background-color: rgba(16,135,117,.1);
+}
+</style>
+
+<!--
+#### Bon je le mentionne quand même, ça a le mérite d'exister !
+#### Mais pour être un peu plus sérieux je vous conseille TablePlus.
+-->
 
 
 
@@ -249,9 +333,9 @@ plop
 On retrouve par exemple un article qui donne les solutions de hosting cloud d'une DB.
 
 ➕➕ <strong>Le dynamisme du projet.</strong>  
-Les releases régulières, le Slack de 46,000 personnes, la récente conf' Prisma Day.  
+Une levée de fonds en 2018, les releases régulières, le Slack de 46,000 personnes, la récente conf' Prisma Day.  
 <span class="text-sm">
-  (Disclaimer: Comme tout outil on ne sait pas si ça sera encore vivant dans 2-3 ans !)
+  (Disclaimer: Comme tout outil on ne sait pas si ça sera encore aussi dynamique dans quelques années !)
 </span>
 
 <Tweet id="1400893865196879873" scale="0.65" class="mt-7" />
@@ -266,11 +350,14 @@ Les releases régulières, le Slack de 46,000 personnes, la récente conf' Prism
 
 ---
 
-## Et ?
+## En vrac
 
-<img src="/images/frameworks-using-prisma.png">
+👉 Au début l'outil s'appelait Graphcool.
 
-👉 &nbsp;https://www.prisma.io/blog/prisma-the-complete-orm-inw24qjeawmb
+👉 Le "Prisma Query Engine" est codé en Rust.
+
+👉 La roadmap de l'équipe Prisma est partagée ici :
+<a href="https://www.notion.so/Prisma-Roadmap-50766227b779464ab98899accb98295f" target="_blank">notion.so/Pris...</a>
 
 
 
@@ -344,3 +431,12 @@ https://cedric.nicoloso.me/
 <br>
 
 Retrouvez ces slides : https://cedric.nicoloso.me/2021-07/prisma-talk
+
+
+
+
+
+---
+
+## Un ROTI ?
+
