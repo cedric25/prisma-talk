@@ -1,6 +1,6 @@
 ## Prisma : Le schéma
 
-<div class="grid mt-4 gap-6" style="grid-template-columns: 0.9fr 1.1fr;">
+<div class="grid mt-4 gap-6 -ml-8 -mr-8" style="grid-template-columns: 0.8fr 1.1fr; overflow: auto">
 
 ```js {all|all|13}
 # schema.prisma
@@ -17,8 +17,7 @@ datasource db {
 model User {
   user_id        String         @id
   email          String         @unique
-  first_name     String
-  last_name      String
+  full_name      String
   bank_accounts  BankAccount[]
   created_at     DateTime       @default(now())
   updated_at     DateTime       @updatedAt
@@ -28,8 +27,7 @@ model User {
 ```
 
 <div v-if="$slidev.nav.clicks >= 1">
-```js {all|11-12}
-
+```js {all|10-11}
 
 
 
@@ -38,14 +36,14 @@ model User {
 
 
 model BankAccount {
-  bank_account_id  String   @id @default(uuid())
-  user_id          String
-  user             User     @relation(fields: [user_id], references: [user_id])
-  number           Int      @default(1)
-  name             String
-  balance_in_cents Int
-  created_at       DateTime @default(now())
-  updated_at       DateTime @updatedAt
+  account_id String   @id @default(uuid())
+  user_id    String
+  user       User     @relation(fields: [user_id], references: [user_id])
+  number     Int      @default(1)
+  name       String
+  balance    Int
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
 
   @@unique([user_id, number])
 
@@ -67,5 +65,5 @@ model BankAccount {
 
 #### Petite astuce ici : nommer le champ de la même façon dans les deux tables.
 
-#### Ah oui et si vous avez déjà une base de données, vous pouvez demander à Prisma de vous générer ce fichier. (Commande 'introspect')
+#### C'est un exemple ici de one-to-many, le many-to-many est aussi faisable, via une table de relation.
 -->

@@ -8,7 +8,16 @@
     class="absolute bottom-0 left-1 p-2 text-sm w-full"
   >
     <div class="flex">
-      <div>Cedric Nicoloso | LyonJS | juillet 2021</div>
+      <div>
+        Cédric Nicoloso&nbsp; | &nbsp;LyonJS chez
+        <img
+          src="https://georges-public-assets.s3-eu-west-1.amazonaws.com/images/indy/indy-logo.svg"
+          height="15"
+          class="inline"
+          style="height: 16px; margin-bottom: 1px; margin-left: 1px"
+        />
+        &nbsp;| &nbsp;juillet 2021
+      </div>
       <div class="flex-grow">&nbsp;</div>
       <div
         class="mr-1 border rounded-md px-1 text-xs flex items-center"
@@ -23,3 +32,9 @@
     </div>
   </footer>
 </template>
+
+<style>
+footer {
+  font-family: 'Roboto Light', sans-serif;
+}
+</style>

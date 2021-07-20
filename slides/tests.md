@@ -1,27 +1,31 @@
-## Les tests
+## Des tests ?
 
-1. En mockant complètement le prisma client.
+<div class="mt-8"></div>
+<mdi-numeric-1-box class="inline text-orange-300 text-2xl -mt-1" />
+En mockant complètement le client Prisma.
 
-2. En ayant un base de données de test.
+👉 https://www.prisma.io/docs/guides/testing/unit-testing
 
-2.1. Injecter l'URL de la bdd de test :
+<div class="mt-12"></div>
+
+<mdi-numeric-2-box class="inline text-orange-300 text-2xl -mt-1" />
+En ayant un base de données de test.
+
+👉 https://www.prisma.io/docs/guides/testing/integration-testing
+
+ - Injecter l'URL de la base de données de test :
 
 `DATABASE_URL=postgresql://test-user:plop@localhost:5432/freely-test`
 
-2.2. Reset de la base entre chaque test.
+ - Réinitialiser la base de données entre chaque test.
 
-📍 Problème : ça bloque le run des tests en parallèle...
+`TRUNCATE TABLE \"${dbSchemaName}\".\"${tablename}\" CASCADE;`
 
-<div>
-💡 La technique de passer le test dans une transaction et de ne rien commiter à la fin est à priori déconseillé par Prisma.
-</div>
-
-<div>
-💡 Créer un schéma par test ?
-</div>
 
 <!--
-#### Alors je n'ai pas trop creusé la première option.
+📍 Problème : ça bloque le run des tests en parallèle...
 
+💡 La technique de passer le test dans une transaction et de ne rien commiter à la fin ?
 
+💡 Créer un schéma par test ?
 -->

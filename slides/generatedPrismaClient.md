@@ -26,26 +26,18 @@ Des fonctions 'helpers' :
 
 Les types TypeScript correspondant à nos modèles.
 
-```typescript
-import { Prisma } from '@prisma/client'
+👉 `BankAccount` :
+> Une ligne dans notre table.
 
-async getAccountingSumInCents({
-  userId, accountingNumber, firstDate, lastDate
-}): Promise<
-  Prisma.GetAccountingLineAggregateType<{
-    sum: { amount_in_cents: true }
-  }>
-> {
-    return this.#accountingLine.aggregate({
-      sum: { amount_in_cents: true },
-      where: {
-        user_id: userId,
-        accounting_number: accountingNumber,
-        date: { gte: firstDate, lte: lastDate },
-      },
-    })
-}
-```
+<br>
+ 
+👉 `BankAccountCreateInput` :
+> Ce qu'on a le droit de mettre quand on crée un bank_account.
+
+<br>
+
+👉 `BankAccountWhereInput`
+> Ce qu'on a le droit de mettre dans une condition 'where'.
 
 </div>
 </div>

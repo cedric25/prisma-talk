@@ -30,5 +30,5 @@ export class User {
 <!--
 ### Exemple avec d'autres outils comme TypeORM où on va définir une classe JS / TS dans laquelle on va annoter / décorer les propriétés.
 
-### Ça s'inspire de d'autres ORM dans d'autres technos, si certains ont connu Java avec *Hibernate*...️
+### Ça s'inspire d'autres ORM dans d'autres technos, si certains ont connu Java avec *Hibernate*...️
 -->

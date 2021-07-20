@@ -34,7 +34,7 @@ layout: cover
 
 <div class="pt-12">
   <span @click="$slidev.nav.next" class="px-2 py-1 rounded cursor-pointer" hover="bg-white bg-opacity-10">
-    Press Space for next page <carbon:arrow-right class="inline"/>
+    Talk #1 : Prisma comme ORM pour Postgres <carbon:arrow-right class="inline"/>
   </span>
 </div>
 
@@ -53,6 +53,7 @@ layout: cover
 
 ---
 src: ./slides/prismaTitle.md
+layout: prisma-title
 ---
 
 
@@ -72,6 +73,33 @@ src: ./slides/prismaSchema.md
 
 
 ---
+
+## Dans les deux sens
+
+<div class="mt-15">
+<span class="base-chip green">Schéma Prisma</span>
+<heroicons-outline:arrow-narrow-right class="inline mx-4" />
+<span class="base-chip orange">Base de données</span>
+
+`prisma db push`
+
+`prisma migrate dev`
+</div>
+
+<div class="mt-20">
+<span class="base-chip orange">Base de données</span>
+<heroicons-outline:arrow-narrow-right class="inline mx-4" />
+<span class="base-chip green">Schéma Prisma</span>
+
+  `prisma introspect`
+</div>
+
+<!--
+#### Ah oui et si vous avez déjà une base de données, vous pouvez demander à Prisma de vous générer ce fichier. (Commande 'introspect')
+-->
+
+
+---
 src: ./slides/typeOrmComparison.md
 ---
 
@@ -87,15 +115,13 @@ src: ./slides/generatedPrismaClient.md
 
 
 
-
-
 ---
 
 ## Intégration du client Prisma
 
 ```javascript
 import express from 'express'
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient } from '@prisma/client' // = import from '.prisma/client
 
 const prisma = new PrismaClient()
 
@@ -113,17 +139,11 @@ app.get('/posts', async (req, res) => {
 <!--
 ### Exemple classique, tiré de la doc de Prisma.
 
-#### Bon je comprends que c'est un exemple mais personnellement quand je vois ça j'ai mal aux yeux.
-#### Non on n'interagît pas avec la base depuis un handler de route 🙀
+#### Bon, c'est un exemple...
+#### On préfèrera faire par exemple de l'injection de dépendance pour accéder à notre client Prisma. 
 -->
 
 
-
-
-
----
-src: ./slides/usePrismaClient2.md
----
 
 
 ---
@@ -178,25 +198,63 @@ Une UI "minimaliste" pour explorer la base.
 
 ---
 
-## Pourquoi ça m'a plu ?
+## Avantages de l'outil
 
-➕➕ <strong>TypeScript-first.</strong>  
-
-➕➕ <strong>La doc qui balaye large.</strong>  
-On retrouve par exemple un article qui donne les solutions de hosting cloud d'une DB.
+➕➕ <strong>TypeScript-first.</strong>
 
 ➕➕ <strong>Le dynamisme du projet.</strong>  
-Une levée de fonds en 2018, les releases régulières, le Slack de 46,000 personnes, la récente conf' Prisma Day.  
+Une vraie équipe derrière, des releases régulières, le Slack de 46,000 personnes, la récente conf' Prisma Day.  
 <span class="text-sm">
   (Disclaimer: Comme tout outil on ne sait pas si ça sera encore aussi dynamique dans quelques années !)
 </span>
 
+➕➕ <strong>La doc qui balaye large.</strong>  
+On retrouve par exemple un article qui donne <a href="https://www.prisma.io/dataguide/postgresql/5-ways-to-host-postgresql" target="_blank">des solutions de hosting cloud d'un PostgreSQL</a>.
+
 <Tweet id="1400893865196879873" scale="0.65" class="mt-7" />
 
 <!--
-### Et pourtant je ne suis pas un fan de la première de TS, mais là il faut bien reconnaître que c'est hyper agréable de bosser avec ça dans l'IDE.
+### Je suis pas un fan de la première heure de TS, mais là il faut bien reconnaître que c'est hyper agréable de bosser avec ça dans l'IDE.
 -->
 
+
+
+
+---
+
+## Dans mon contexte
+
+<ul>
+<li class="list-none mt-7">
+👉 &nbsp;Un nouveau projet.
+</li>
+
+<li class="list-none mt-7">
+👉 &nbsp;Seul développeur au début.
+</li>
+
+<li class="list-none mt-7">
+👉 &nbsp;Expérience précédente sur <strong>MongoDB</strong> et <strong>Mongoose</strong>.
+</li>
+</ul>
+
+<div class="mt-18">
+
+<div class="uppercase mb-5 text-gray-400">
+Est-ce je devrais utiliser Prisma ? 🤔
+</div>
+<a href="https://www.prisma.io/docs/concepts/overview/should-you-use-prisma" target="_blank">
+https://www.prisma.io/docs/concepts/overview/should-you-use-prisma
+</a>
+</div>
+
+<!--
+#### 3. Donc l'idée c'était aussi de pas partir à l'opposé de ça.
+
+#### Bref pour l'instant, dans mon contexte, plus d'avantages que d'inconvénients.
+
+#### Et de toute façon, un ORM ne vous empêchera de tomber sur des problématiques plus larges de base de données, de SQL, etc.
+-->
 
 
 
@@ -205,20 +263,35 @@ Une levée de fonds en 2018, les releases régulières, le Slack de 46,000 perso
 
 ## En vrac
 
-👉 Au début l'outil s'appelait <strong>Graphcool</strong>.
+<ul>
+<li class="list-none mt-7">
+👉 &nbsp;Mai 2017 : Au début l'outil s'appelait <strong>Graphcool</strong>.
+</li>
 
-👉 Le "Prisma Query Engine" est codé en <strong>Rust</strong>.
+<li class="list-none mt-7">
+👉 &nbsp;Mai 2018 : Seed de $4.5M et renommage en Prisma.
+</li>
 
-👉 La roadmap de l'équipe Prisma est partagée ici :
-<a href="https://www.notion.so/Prisma-Roadmap-50766227b779464ab98899accb98295f" target="_blank">notion.so/Pris...</a>
+<li class="list-none mt-7">
+👉 &nbsp;Début 2019 : Sortie de Prisma 2 et décorrélation de GraphQL.
+</li>
 
+<li class="list-none mt-12">
+👉 &nbsp;Le "Prisma Query Engine" est codé en <strong>Rust</strong>.
+</li>
+
+<li class="list-none mt-7">
+👉 &nbsp;La roadmap de l'équipe Prisma est partagée ici :
+<a href="https://www.notion.so/Prisma-Roadmap-50766227b779464ab98899accb98295f" target="_blank">notion.so/Prisma-Roadmap...</a>
+</li>
+</ul>
 
 
 
 
 ---
 
-## Pour aller plus loin
+## Quelques liens utiles
 
 <ul>
   <li>
@@ -228,21 +301,15 @@ Une levée de fonds en 2018, les releases régulières, le Slack de 46,000 perso
     </a>
   </li>
   <li>
-    <div>(mars 2021) Comparaison de différents ORMs JS / TS :</div>
+    <div>Comparaison de différents ORMs JS / TS : <span class="ml-2 text-sm text-gray-400">(mars 2021)</span></div>
     👉 <a href="https://www.sitepoint.com/javascript-typescript-orms/" target="_blank" class="ml-1">
       https://www.sitepoint.com/javascript-typescript-orms/
     </a>
   </li>
   <li>
-    <div>(avril 2021) Un article qui compare Prisma à TypeORM :</div>
+    <div>Un article qui compare Prisma à TypeORM : <span class="ml-2 text-sm text-gray-400">(avril 2021)</span></div>
     👉 <a href="https://javascript.developpez.com/actu/314513/Prisma-un-ORM-de-nouvelle-generation-pour-Node-js-et-TypeScript-pour-concurrencer-TypeORM-et-Sequelize-et-devenir-la-norme-de-l-industrie/" target="_blank" class="ml-1">
       https://javascript.developpez.com/actu/314513/Prisma-un-ORM-de-nouv...
-    </a>
-  </li>
-  <li>
-    <div>Chaîne Youtube avec présentations des releases</div>
-    👉 <a href="https://www.youtube.com/c/PrismaData" target="_blank" class="ml-1">
-      https://www.youtube.com/c/PrismaData
     </a>
   </li>
 </ul>
@@ -263,33 +330,7 @@ ul li {
 
 
 
-
 ---
-class: text-center
+src: ./slides/roti.md
 ---
-
-## Cédric Nicoloso
-
-<br>
-
-<div class="flex justify-center">
-  <img src="https://avatars.githubusercontent.com/u/4280765" class="w-40 h-40 rounded-full">
-</div>
-
-<br>
-
-https://cedric.nicoloso.me/
-
-<br>
-<br>
-
-Retrouvez ces slides : https://cedric.nicoloso.me/2021-07/prisma-talk
-
-
-
-
-
----
-
-## Un ROTI ?
 

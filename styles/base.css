@@ -1,3 +1,8 @@
+:root {
+    --slidev-code-line-height: 18px;
+    --slidev-code-font-size: 17px;
+}
+
 h2 {
     @apply mb-4;
     font-size: 2.25rem !important;
@@ -12,5 +17,18 @@ h2 {
 }
 
 .slidev-code {
-    font-size: 0.55rem !important;
+    @apply tracking-tight;
+}
+
+.base-chip {
+    font-family: 'Roboto Light', sans-serif;
+    background: rgb(237, 242, 247);
+    border-radius: 5px;
+    padding: 4px 10px;
+}
+.base-chip.green {
+    background-color: rgba(59, 211, 84, 0.08);
+}
+.base-chip.orange {
+    background-color: rgba(211, 138, 59, 0.1);
 }

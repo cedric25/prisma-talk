@@ -1,45 +1,48 @@
----
-
 ## Autres candidats
 
-### Contexte : PostgreSQL
+<div class="grid h-full pt-10 pb-20 relative -ml-10 -mr-10" style="grid-template-columns: 1.3fr 1.2fr 0.9fr 0.9fr;">
 
-<div class="grid h-full pt-10 pb-20" style="grid-template-columns: 1.3fr 1.2fr 0.9fr 0.9fr;">
-
-<div class="flex items-center justify-center border-r">
+<div v-click class="flex items-center justify-center border-r mr-2">
+  <div class="absolute top-13 left-17 text-xl base-chip">
+    👉 Driver natif
+  </div>
   <div>
     <a href="https://github.com/brianc/node-postgres" target="_blank" class="text-3xl">
       pg
     </a>
-    <div class="mt-3">
-      → Le driver natif JS pour PostgreSQL
-    </div>
-    <div class="mt-3" style="width: 215px;">
+    <div class="mt-7" style="width: 225px;">
 
 ```javascript
-const user = await client.query(
-  'SELECT * FROM users WHERE id = $1',
+await client.query(
+  `SELECT *
+   FROM users
+   WHERE id = $1`,
   ['123']
 )
 ```
 
 </div>
-  </div>
+</div>
 </div>
 
-<div class="flex items-center justify-center border-r">
+<div v-click class="flex items-center justify-center border-r -mr-3">
+  <div class="absolute top-2 left-85 text-xl base-chip">
+    👉 Query builder
+  </div>
   <div>
-    <a href="https://github.com/knex/knex" target="_blank" class="text-3xl">
-      knex
-      <img src="https://knexjs.org/assets/favicons/favicon-32x32.png" class="inline-block" style="width: 25px;" />
-    </a>
-    <div class="mt-3">
-      → Un query builder
+    <div class="ml-6">
+      <a href="https://github.com/knex/knex" target="_blank" class="text-3xl">
+        knex
+        <img src="https://knexjs.org/assets/favicons/favicon-32x32.png" class="inline-block" style="width: 25px;" />
+      </a>
+      <div class="mt-3">
+        → Un query builder
+      </div>
+      <div class="mt-3">
+        <GithubStars count="14.4k" />
+      </div>
     </div>
-    <div class="mt-3">
-      <GithubStars count="14.4k" />
-    </div>
-    <div class="mt-3 code-small">
+    <div class="mt-5">
 
 ```typescript
 interface User {
@@ -54,10 +57,13 @@ knex<User>('users')
 ```
 
 </div>
-  </div>
+</div>
 </div>
 
-<div class="flex flex-col content-center items-end -mt-14">
+<div v-click class="flex flex-col content-center items-end -mt-10">
+  <div class="absolute -top-14 left-180 text-xl base-chip">
+    👉 ORM
+  </div>
   <div style="width: 150px;">
     <a href="https://github.com/sequelize/sequelize" target="_blank" class="text-2xl">
       Sequelize
@@ -105,7 +111,7 @@ knex<User>('users')
   </div>
 </div>
 
-<div class="flex flex-col content-center items-center -mt-5">
+<div v-click class="flex flex-col content-center items-center -mt-5">
   <div class="mt-10" style="min-width: 120px">
     <a href="https://github.com/bookshelf/bookshelf" target="_blank">
       Bookshelf.js
@@ -149,6 +155,9 @@ knex<User>('users')
 ### pg : On est au plus proche de la bdd, c'est flexible, c'est top en terme de perfs, etc. Mais on est un peu seul, à écrire nos requêtes SQL sans auto-complétion dans l'IDE, sans type-checking, etc.
 
 #### knex, l'entre-deux. Des méthodes helpers pour écrire nos requêtes, on se sent un peu plus en sécurité.
+
+#### Ensuite la famille des ORMs : plus complexe, moins de maîtrise sur le code SQL généré, etc.
+#### Je reviendrai peut-être là-dessus en fin de présentation.
 
 #### knex est parfois la base de l'ORM : Objection.js, MikroORM, Bookshelf.js, etc.
 -->

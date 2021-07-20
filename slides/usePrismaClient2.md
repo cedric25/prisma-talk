@@ -22,7 +22,8 @@ import { PrismaClient } from '@prisma/client'
 
 const prismaClient = new PrismaClient()
 
-// Je décore mon instance de serveur avec mon client Prisma
+// Je décore mon instance de serveur
+// avec mon client Prisma
 export default plugin(async instance => {
   instance.decorate('db', prismaClient)
 })
