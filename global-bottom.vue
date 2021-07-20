@@ -2,7 +2,7 @@
   <footer
     v-if="
       $slidev.nav.currentLayout !== 'cover' &&
-      $slidev.nav.currentLayout !== 'prisma-title' &&
+      $slidev.nav.currentPage !== 2 &&
       $slidev.nav.currentPage !== $slidev.nav.total + 1
     "
     class="absolute bottom-0 left-1 p-2 text-sm w-full"

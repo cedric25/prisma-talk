@@ -53,7 +53,6 @@ layout: cover
 
 ---
 src: ./slides/prismaTitle.md
-layout: prisma-title
 ---
 
 
