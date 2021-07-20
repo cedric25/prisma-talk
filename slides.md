@@ -34,7 +34,7 @@ layout: cover
 
 <div class="pt-12">
   <span @click="$slidev.nav.next" class="px-2 py-1 rounded cursor-pointer" hover="bg-white bg-opacity-10">
-    Talk #1 : Prisma comme ORM pour Postgres <carbon:arrow-right class="inline"/>
+    Talk #1 : Prisma comme ORM pour PostgreSQL <carbon:arrow-right class="inline"/>
   </span>
 </div>
 
@@ -241,7 +241,7 @@ On retrouve par exemple un article qui donne <a href="https://www.prisma.io/data
 <div class="mt-18">
 
 <div class="uppercase mb-5 text-gray-400">
-Est-ce je devrais utiliser Prisma ? 🤔
+"Est-ce je devrais utiliser Prisma ?" 🤔
 </div>
 <a href="https://www.prisma.io/docs/concepts/overview/should-you-use-prisma" target="_blank">
 https://www.prisma.io/docs/concepts/overview/should-you-use-prisma
