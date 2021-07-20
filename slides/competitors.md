@@ -4,9 +4,9 @@
 
 ### Contexte : PostgreSQL
 
-<div grid="~ cols-4 gap-2" class='h-full pt-10 pb-20'>
+<div class="grid h-full pt-10 pb-20" style="grid-template-columns: 1.3fr 1.2fr 0.9fr 0.9fr;">
 
-<div class="flex items-center justify-center border-r -ml-4">
+<div class="flex items-center justify-center border-r">
   <div>
     <a href="https://github.com/brianc/node-postgres" target="_blank" class="text-3xl">
       pg
@@ -146,7 +146,7 @@ knex<User>('users')
 </style>
 
 <!--
-### pg : On est au plus proche de la bdd, c'est flexible, c'est top en terme de perfs, etc. Mais on est un peu à poil, à écrire nos requêtes SQL sans auto-complétion dans l'IDE, sans type-checking, etc.
+### pg : On est au plus proche de la bdd, c'est flexible, c'est top en terme de perfs, etc. Mais on est un peu seul, à écrire nos requêtes SQL sans auto-complétion dans l'IDE, sans type-checking, etc.
 
 #### knex, l'entre-deux. Des méthodes helpers pour écrire nos requêtes, on se sent un peu plus en sécurité.
 

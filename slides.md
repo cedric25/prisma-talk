@@ -4,7 +4,8 @@ theme: seriph
 
 # random image from a curated Unsplash collection by Anthony
 # like them? see https://unsplash.com/collections/94734566/slidev
-background: https://source.unsplash.com/collection/94734566/1920x1080
+#background: https://source.unsplash.com/collection/94734566/1920x1080
+background: https://images.unsplash.com/photo-1588153191435-c890d9adbb99?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80
 
 # apply any windi css classes to the current slide
 class: 'text-center'
@@ -26,7 +27,7 @@ layout: cover
 
 <div class="flex justify-center">
   <img
-    class="w-80 opacity-75"
+    class="w-80 opacity-90"
     src="https://secure-content.meetupstatic.com/images/https%3A%2F%2Fsecure.meetupstatic.com%2Fphotos%2Fevent%2F9%2F2%2F9%2F7%2Fhighres_496537527.jpeg/600x337.jpg"
   />
 </div>
@@ -70,48 +71,9 @@ src: ./slides/prismaSchema.md
 ---
 
 
-
-
-
 ---
-
-## Chez TypeORM
-
-### Annotations au-dessus d'attributs de classe
-
-<div class="mt-4">
-
-```typescript
-// User.ts
-
-@Entity()
-export class User {
-
-  @PrimaryGeneratedColumn("uuid")
-  user_id: number;
-
-  @Column()
-  firstName: string;
-
-  @Column()
-  lastName: string;
-
-  @Column()
-  age: number;
-
-}
-```
-
-</div>
-
-<!--
-### Exemple avec d'autres outils comme TypeORM où on va définir une classe JS / TS dans laquelle on va annoter / décorer les propriétés.
-
-### C'est un peu subjectif mais j'accroche pas trop avec cette notation, les décorateurs en JS ce n'est pas une syntaxe native (il faut se tirer `reflect-metadata` si je me souviens bien), et ça me rappelle peut-être trop Java avec *Hibernate*... 🤷‍♂️
--->
-
-
-
+src: ./slides/typeOrmComparison.md
+---
 
 
 ---
@@ -119,72 +81,9 @@ src: ./slides/prismaSchema2.md
 ---
 
 
-
-
-
 ---
-
-## Les deux fichiers générés
-
-<div grid="~ cols-2 gap-6" class="relative">
-
-<div class="pr-3 border-r">
-
-### index.js
-
-👉 findFirst()  
-👉 findMany()  
-👉 updateOne()  
-👉 etc..
-
-Des fonctions 'helpers' :
- - Formuler des requêtes de base de données,
- - Nous renvoient toujours des objets JavaScript simples.
-
-<div class="text-sm mt-10">
-(On peut toujours faire du SQL natif si Prisma ne contient pas la méthode qu'on souhaite : `prismaClient.$queryRaw`)
-</div>
-
-</div>
-<div>
-
-### index.d.ts
-
-Les types TypeScript correspondant à nos modèles.  
-
-<div class="text-sm mb-2">
-8 tables = 13 000 lignes de TS...
-</div>
-
-```typescript
-async getAccountingSumInCents({
-  userId, firstDate, lastDate
-}: {
-  userId: string; firstDate: Date; lastDate: Date
-}): Promise<
-  Prisma.GetAccountingLineAggregateType<{
-    sum: { amount_in_cents: true }
-  }>
-> {
-    return this.#accountingLine.aggregate({
-      sum: { amount_in_cents: true },
-      where: {
-        user_id: userId,
-        date: { gte: firstDate, lte: lastDate },
-      },
-    })
-}
-```
-
-</div>
-</div>
-
-<!--
-#### Des POJOs, contrairement à d'autres ORMs qui ont tendance à renvoyer des instances de modèles.
-
-### $queryRaw : Je l'ai utilisé pour une requête de recherche de texte pour enlever les caractères accentués via un plugin de Postgres...
-#### Mais attention ici on perdra les vérifications de syntaxe.
--->
+src: ./slides/generatedPrismaClient.md
+---
 
 
 
@@ -223,64 +122,18 @@ app.get('/posts', async (req, res) => {
 
 
 ---
-
-## On essaye plus propre ?
-
-
-
-
-
+src: ./slides/usePrismaClient2.md
+---
 
 
 ---
-
-## Les tests ?
-
-
-
+src: ./slides/tests.md
+---
 
 
 ---
-
-## Prisma migrate
-
-1. On travaille sur sa feature :
-
-Modifications dans le schema.prisma.
-`prisma db push` && `prisma generate`
-
-2. On est prêt à valider notre feature :
-`prisma migrate dev --name "Ajout de la table authors"`
-
- -> Nous génère un script de migration :
-```
-server
- > dist
- > node_modules
- > prisma
-     > migrations
-         > 20210715144607_ajout_de_la_table_authors
-             migration.sql
-     schema.prisma
- > src
- > test
-   ...
-```
-
-Et pour mettre à jour la base de données de préprod :
-
-`prisma migrate deploy`
-
-```json
-scripts: {
-  "db-preprod-up": "dotenv -e .env.preprod -- npx prisma migrate deploy",
-}
-```
-
-(Insertion d'une ligne dans la table _prisma_migrations)
-
-
-
+src: ./slides/prismaMigrate.md
+---
 
 
 
@@ -352,9 +205,9 @@ Une levée de fonds en 2018, les releases régulières, le Slack de 46,000 perso
 
 ## En vrac
 
-👉 Au début l'outil s'appelait Graphcool.
+👉 Au début l'outil s'appelait <strong>Graphcool</strong>.
 
-👉 Le "Prisma Query Engine" est codé en Rust.
+👉 Le "Prisma Query Engine" est codé en <strong>Rust</strong>.
 
 👉 La roadmap de l'équipe Prisma est partagée ici :
 <a href="https://www.notion.so/Prisma-Roadmap-50766227b779464ab98899accb98295f" target="_blank">notion.so/Pris...</a>

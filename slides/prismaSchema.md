@@ -1,6 +1,6 @@
 ## Prisma : Le schéma
 
-<div grid="~ cols-2 gap-6" class="mt-4">
+<div class="grid mt-4 gap-6" style="grid-template-columns: 0.9fr 1.1fr;">
 
 ```js {all|all|13}
 # schema.prisma
@@ -20,7 +20,6 @@ model User {
   first_name     String
   last_name      String
   bank_accounts  BankAccount[]
-  roles          String[]
   created_at     DateTime       @default(now())
   updated_at     DateTime       @updatedAt
 
@@ -56,3 +55,17 @@ model BankAccount {
 </div>
 
 </div>
+
+<!--
+#### Allez on va rentrer un peu dans le dur du sujet. Et la première chose sur laquelle on tombe avec Prisma, c'est cette syntaxe de schéma.
+
+#### On retrouve au début des petites infos de configuration, notamment avec l'URL de connexion qui viendra d'une variable d'environnment.
+
+#### Puis ici on a un premier exemple de mapping de table. Bon rien de compliqué c'est un syntaxe qui est assez explicite.
+
+#### Une deuxième table ici 'BankAccount'
+
+#### Petite astuce ici : nommer le champ de la même façon dans les deux tables.
+
+#### Ah oui et si vous avez déjà une base de données, vous pouvez demander à Prisma de vous générer ce fichier. (Commande 'introspect')
+-->

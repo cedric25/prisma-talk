@@ -11,8 +11,7 @@
 <div v-click class="absolute top-90 left-100">
   <ul>
     <li>Express, Koa, hapi, fastify...</li>
-    <li>REST</li>
-    <li>GraphQL</li>
+    <li>REST, GraphQL</li>
   </ul>
 </div>
 

@@ -75,3 +75,7 @@ server
 </div>
 
 </div>
+
+<!--
+### Avec ce schéma, on va pouvoir utiliser la CLI de Prisma pour nous générer notre client Prisma.
+-->
