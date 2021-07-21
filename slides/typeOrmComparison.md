@@ -31,7 +31,7 @@ export class User {
 <div class="flex items-center">
 <div>
 <div class="mb-3">
-Object–relational impedance mismatch? 🤯
+"Object–relational impedance mismatch" ? 🤯
 </div>
 
 <a href="https://www.prisma.io/docs/concepts/overview/prisma-in-your-stack/is-prisma-an-orm" target="_blank">

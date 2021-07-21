@@ -57,6 +57,11 @@ src: ./slides/prismaTitle.md
 
 
 ---
+src: ./slides/myContext.md
+---
+
+
+---
 src: ./slides/prismaWhatIsIt.md
 ---
 
@@ -80,9 +85,7 @@ J'ai mon <span class="base-chip green">schéma Prisma</span>
 <heroicons-outline:arrow-narrow-right class="text-3xl inline mx-4" />
 Je veux ma structure en <span class="base-chip orange">base de données</span>
 
-`prisma db push`
-
-`prisma migrate dev`
+`prisma db push` &nbsp;&nbsp;&nbsp;✅
 </div>
 
 <div class="mt-20">
@@ -90,7 +93,7 @@ J'ai ma structure en <span class="base-chip orange">base de données</span>
 <heroicons-outline:arrow-narrow-right class="text-3xl inline mx-4" />
 Je veux mon <span class="base-chip green">schéma Prisma</span>
 
-  `prisma introspect`
+`prisma introspect` &nbsp;&nbsp;&nbsp;✅
 </div>
 
 <!--
@@ -223,52 +226,6 @@ On retrouve par exemple un article qui donne <a href="https://www.prisma.io/data
 ### Je suis pas un fan de la première heure de TS, mais là il faut bien reconnaître que c'est hyper agréable de bosser avec ça dans l'IDE.
 -->
 
-
-
-
----
-
-## Dans mon contexte
-
-<ul>
-<li class="list-none mt-7">
-👉 &nbsp;Un nouveau projet 🇺🇸
-</li>
-
-<li class="list-none mt-7">
-👉 &nbsp;Seul développeur au début.
-</li>
-
-<li class="list-none mt-7">
-👉 &nbsp;Expérience précédente sur <strong>MongoDB</strong> et <strong>Mongoose</strong>.
-</li>
-
-<li class="list-none mt-7">
-👉 &nbsp;3 ans sans vraiment avoir fait de SQL.
-
-<span class="block ml-6">
-"Ne pas sortir de sa zone de confort"
-</span>
-</li>
-</ul>
-
-<div class="mt-12">
-
-<div class="uppercase mb-5 text-gray-400">
-"Est-ce je devrais utiliser Prisma ?" 🤔
-</div>
-<a href="https://www.prisma.io/docs/concepts/overview/should-you-use-prisma" target="_blank">
-https://www.prisma.io/docs/concepts/overview/should-you-use-prisma
-</a>
-</div>
-
-<!--
-#### 3. Donc l'idée c'était aussi de pas partir à l'opposé de ça.
-
-#### Bref pour l'instant, dans mon contexte, plus d'avantages que d'inconvénients.
-
-#### Et de toute façon, un ORM ne vous empêchera de tomber sur des problématiques plus larges de base de données, de SQL, etc.
--->
 
 
 

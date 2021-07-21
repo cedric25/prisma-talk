@@ -1,4 +1,4 @@
-## Autres candidats
+## Accès à la base de données
 
 <div class="grid h-full pt-10 pb-20 relative -ml-10 -mr-10" style="grid-template-columns: 1.3fr 1.2fr 0.9fr 0.9fr;">
 
@@ -62,7 +62,7 @@ knex<User>('users')
 
 <div v-click class="flex flex-col content-center items-end -mt-10">
   <div class="absolute -top-14 left-180 text-xl base-chip">
-    👉 ORM
+    👉 ORMs
   </div>
   <div style="width: 150px;">
     <a href="https://github.com/sequelize/sequelize" target="_blank" class="text-2xl">

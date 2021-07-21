@@ -2,6 +2,7 @@
 
 <div class="text-xl mt-5">
   Prisma fait partie de <strong>la famille des ORMs</strong>.
+  <span class="text-base ml-1">(Object–relational mapping)</span>
 </div>
 
 <div class="mt-12">

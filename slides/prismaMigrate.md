@@ -3,13 +3,14 @@
 <div grid="~ cols-2 gap-6" class="relative">
 
 <div v-click>
+<div class="mb-3">
 <mdi-numeric-1-box class="inline text-orange-300 text-2xl -mt-1" />
-Je travaille sur ma feature :
+Je travaille sur ma feature, je fais une modification dans mon `schema.prisma` :
+</div>
 
-Modifications dans le `schema.prisma`.
-- `prisma format`
-- `prisma db push`
-- `prisma generate`
+- `prisma format` > formatage + quelques vérifications
+- `prisma db push` > Mise à jour de la structure de la base
+- `prisma generate` > Mise à jour du client Prisma
 </div>
 
 <div v-click class="-mt-10">
@@ -59,4 +60,7 @@ scripts: {
 
 #### On peut aller vérifier les scripts SQL générés par 'prisma migrate'. Dans mon cas rien de bien compliqué donc c'était ok.
 #### On peut toujours aller modifier ces scripts (garder la main), mais attention aux modifs il faut que ça reste compatible avec le client Prisma.
+
+### Alors ça, ça marche dans les cas "simples". Typiquement si on renomme une colonne, prisma bloquera pour éviter de perdre des données...
+-> <a href="https://www.prisma.io/dataguide/types/relational/expand-and-contract-pattern" target="_blank">Expand and contract pattern</a>
 -->
