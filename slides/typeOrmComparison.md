@@ -2,7 +2,9 @@
 
 ### Annotations au-dessus d'attributs de classe
 
-<div class="mt-4">
+<div grid="~ cols-2 gap-6" class="mt-4">
+
+<div>
 
 ```typescript
 // User.ts
@@ -24,6 +26,19 @@ export class User {
 
 }
 ```
+</div>
+
+<div class="flex items-center">
+<div>
+<div class="mb-3">
+Object–relational impedance mismatch? 🤯
+</div>
+
+<a href="https://www.prisma.io/docs/concepts/overview/prisma-in-your-stack/is-prisma-an-orm" target="_blank">
+  https://www.prisma.io/docs/ ... /is-prisma-an-orm
+</a>
+</div>
+</div>
 
 </div>
 

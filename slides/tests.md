@@ -4,14 +4,24 @@
 <mdi-numeric-1-box class="inline text-orange-300 text-2xl -mt-1" />
 En mockant complètement le client Prisma.
 
-👉 https://www.prisma.io/docs/guides/testing/unit-testing
+<div class="text-sm mt-2 ml-8">
+👉 &nbsp;
+<a href="https://www.prisma.io/docs/guides/testing/unit-testing" target="_blank">
+https://www.prisma.io/docs/guides/testing/unit-testing
+</a>
+</div>
 
 <div class="mt-12"></div>
 
 <mdi-numeric-2-box class="inline text-orange-300 text-2xl -mt-1" />
 En ayant un base de données de test.
 
-👉 https://www.prisma.io/docs/guides/testing/integration-testing
+<div class="text-sm mt-2 ml-8 mb-4">
+👉 &nbsp;
+<a href="https://www.prisma.io/docs/guides/testing/integration-testing" target="_blank">
+https://www.prisma.io/docs/guides/testing/integration-testing
+</a>
+</div>
 
  - Injecter l'URL de la base de données de test :
 

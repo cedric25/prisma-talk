@@ -76,9 +76,9 @@ src: ./slides/prismaSchema.md
 ## Dans les deux sens
 
 <div class="mt-15">
-<span class="base-chip green">Schéma Prisma</span>
-<heroicons-outline:arrow-narrow-right class="inline mx-4" />
-<span class="base-chip orange">Base de données</span>
+J'ai mon <span class="base-chip green">schéma Prisma</span>
+<heroicons-outline:arrow-narrow-right class="text-3xl inline mx-4" />
+Je veux ma structure en <span class="base-chip orange">base de données</span>
 
 `prisma db push`
 
@@ -86,9 +86,9 @@ src: ./slides/prismaSchema.md
 </div>
 
 <div class="mt-20">
-<span class="base-chip orange">Base de données</span>
-<heroicons-outline:arrow-narrow-right class="inline mx-4" />
-<span class="base-chip green">Schéma Prisma</span>
+J'ai ma structure en <span class="base-chip orange">base de données</span>
+<heroicons-outline:arrow-narrow-right class="text-3xl inline mx-4" />
+Je veux mon <span class="base-chip green">schéma Prisma</span>
 
   `prisma introspect`
 </div>
@@ -126,12 +126,13 @@ const prisma = new PrismaClient()
 
 const app = express()
 
-app.get('/posts', async (req, res) => {
-  const posts = await prisma.post.findMany({
-    where: { published: true },
-    include: { author: true },
+app.get('/bank-accounts', async (req, res) => {
+  const bankAccounts = await prisma.bankAccount.findMany({
+    where: { active: true },
+    include: { user: true },
+    orderBy: { created_at: 'desc' },
   })
-  res.json(posts)
+  res.json(bankAccounts)
 })
 ```
 
@@ -199,15 +200,15 @@ Une UI "minimaliste" pour explorer la base.
 
 ## Avantages de l'outil
 
-➕➕ <strong>TypeScript-first.</strong>
+➕➕ &nbsp;<strong>TypeScript-first.</strong>
 
-➕➕ <strong>Le dynamisme du projet.</strong>  
+➕➕ &nbsp;<strong>Le dynamisme du projet.</strong>  
 Une vraie équipe derrière, des releases régulières, le Slack de 46,000 personnes, la récente conf' Prisma Day.  
 <span class="text-sm">
   (Disclaimer: Comme tout outil on ne sait pas si ça sera encore aussi dynamique dans quelques années !)
 </span>
 
-➕➕ <strong>La doc qui balaye large.</strong>  
+➕➕ &nbsp;<strong>La doc qui balaye large.</strong>  
 On retrouve par exemple un article qui donne <a href="https://www.prisma.io/dataguide/postgresql/5-ways-to-host-postgresql" target="_blank">des solutions de hosting cloud d'un PostgreSQL</a>.
 
 <Tweet id="1400893865196879873" scale="0.65" class="mt-7" />
@@ -225,7 +226,7 @@ On retrouve par exemple un article qui donne <a href="https://www.prisma.io/data
 
 <ul>
 <li class="list-none mt-7">
-👉 &nbsp;Un nouveau projet.
+👉 &nbsp;Un nouveau projet 🇺🇸
 </li>
 
 <li class="list-none mt-7">
@@ -235,9 +236,17 @@ On retrouve par exemple un article qui donne <a href="https://www.prisma.io/data
 <li class="list-none mt-7">
 👉 &nbsp;Expérience précédente sur <strong>MongoDB</strong> et <strong>Mongoose</strong>.
 </li>
+
+<li class="list-none mt-7">
+👉 &nbsp;3 ans sans vraiment avoir fait de SQL.
+
+<span class="block ml-6">
+"Ne pas sortir de sa zone de confort"
+</span>
+</li>
 </ul>
 
-<div class="mt-18">
+<div class="mt-12">
 
 <div class="uppercase mb-5 text-gray-400">
 "Est-ce je devrais utiliser Prisma ?" 🤔
@@ -264,7 +273,7 @@ https://www.prisma.io/docs/concepts/overview/should-you-use-prisma
 
 <ul>
 <li class="list-none mt-7">
-👉 &nbsp;Mai 2017 : Au début l'outil s'appelait <strong>Graphcool</strong>.
+👉 &nbsp;Mai 2017 : Au début l'outil s'appelait <span class="base-chip">Graphcool</span>.
 </li>
 
 <li class="list-none mt-7">
@@ -272,11 +281,11 @@ https://www.prisma.io/docs/concepts/overview/should-you-use-prisma
 </li>
 
 <li class="list-none mt-7">
-👉 &nbsp;Début 2019 : Sortie de Prisma 2 et décorrélation de GraphQL.
+👉 &nbsp;Début 2019 : Sortie de <span class="base-chip">Prisma 2</span> et décorrélation de GraphQL.
 </li>
 
 <li class="list-none mt-12">
-👉 &nbsp;Le "Prisma Query Engine" est codé en <strong>Rust</strong>.
+👉 &nbsp;Le "Prisma Query Engine" est codé en <span class="base-chip">Rust</span>.
 </li>
 
 <li class="list-none mt-7">

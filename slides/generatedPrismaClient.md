@@ -6,21 +6,25 @@
 
 ### index.js
 
-👉 findFirst()  
-👉 findMany()  
-👉 updateOne()  
-👉 etc..
+👉 &nbsp;findFirst()  
+👉 &nbsp;findMany()  
+👉 &nbsp;updateOne()  
+👉 &nbsp;etc..
 
 Des fonctions 'helpers' :
 - Formuler des requêtes de base de données,
-- Nous renvoient toujours des objets JavaScript simples.
+- Nous renvoient toujours des objets JavaScript simples (des POJOs).
 
 <div class="text-sm mt-10">
-(On peut toujours faire du SQL natif si Prisma ne contient pas la méthode qu'on souhaite : `prismaClient.$queryRaw`)
+<div class="-mb-3">
+On peut toujours faire du SQL natif :
+</div>
+
+`prismaClient.$queryRaw('<SQL>')`
 </div>
 
 </div>
-<div>
+<div v-click>
 
 ### index.d.ts
 

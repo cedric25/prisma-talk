@@ -1,5 +1,5 @@
 
-## Prisma : Focus sur ce 'schema.prisma'
+## Génération du client Prisma
 
 <div grid="~ cols-2 gap-6" class="relative">
 
