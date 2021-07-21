@@ -56,4 +56,7 @@ scripts: {
 #### Prisma intègre de la gestion de migrations. (qu'on peut utiliser, ou pas !)
 
 #### Le workflow sur lequel je commence à me caler.
+
+#### On peut aller vérifier les scripts SQL générés par 'prisma migrate'. Dans mon cas rien de bien compliqué donc c'était ok.
+#### On peut toujours aller modifier ces scripts (garder la main), mais attention aux modifs il faut que ça reste compatible avec le client Prisma.
 -->

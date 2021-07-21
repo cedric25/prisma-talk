@@ -192,8 +192,10 @@ Une UI "minimaliste" pour explorer la base.
 </style>
 
 <!--
-#### Bon je le mentionne quand même, ça a le mérite d'exister !
-#### Mais pour être un peu plus sérieux je vous conseille TablePlus.
+### Bon je le mentionne quand même, ça a le mérite d'exister !
+### Mais pour être un peu plus sérieux je vous conseille TablePlus.
+
+### -> Voilà avec ça on a fait un tour rapide de l'outil.
 -->
 
 
