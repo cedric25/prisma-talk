@@ -118,6 +118,8 @@ src: ./slides/generatedPrismaClient.md
 
 ## Intégration du client Prisma
 
+<div class="mt-8">
+
 ```javascript
 import express from 'express'
 import { PrismaClient } from '@prisma/client' // = import from '.prisma/client
@@ -135,6 +137,8 @@ app.get('/bank-accounts', async (req, res) => {
   res.json(bankAccounts)
 })
 ```
+
+</div>
 
 <!--
 ### Exemple classique, tiré de la doc de Prisma.
@@ -301,11 +305,17 @@ https://www.prisma.io/docs/concepts/overview/should-you-use-prisma
 
 ## Quelques liens utiles
 
-<ul>
+<ul class="mt-8">
   <li>
     <div>Commencer avec Prisma :</div>
     👉 <a href="https://www.prisma.io/docs/getting-started" target="_blank" class="ml-1">
       https://www.prisma.io/docs/getting-started
+    </a>
+  </li>
+  <li>
+    <div>Driver natif VS query builders VS ORMs :</div>
+    👉 <a href="https://www.prisma.io/dataguide/types/relational/comparing-sql-query-builders-and-orms" target="_blank" class="ml-1">
+      https://www.prisma.io/dataguide/types/relational/comparing-sql-query-builders-and-orms
     </a>
   </li>
   <li>
