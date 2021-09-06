@@ -1,4 +1,4 @@
-## Les deux fichiers générés
+## Two generated files
 
 <div grid="~ cols-2 gap-6" class="relative">
 
@@ -11,13 +11,13 @@
 👉 &nbsp;updateOne()  
 👉 &nbsp;etc..
 
-Des fonctions 'helpers' :
-- Formuler des requêtes de base de données,
-- Nous renvoient toujours des objets JavaScript simples (des POJOs).
+'helper' functions:
+- To write your queries,
+- Will always return simple JavaScript objects (POJOs).
 
 <div class="text-sm mt-10">
 <div class="-mb-3">
-On peut toujours faire du SQL natif :
+We can still write SQL if necessary:
 </div>
 
 `prismaClient.$queryRaw('<SQL>')`
@@ -28,27 +28,20 @@ On peut toujours faire du SQL natif :
 
 ### index.d.ts
 
-Les types TypeScript correspondant à nos modèles.
+All TypeScript types corresponding to our entities.
 
 👉 `BankAccount` :
-> Une ligne dans notre table.
+> A row in our table.
 
 <br>
- 
+
 👉 `BankAccountCreateInput` :
-> Ce qu'on a le droit de mettre quand on crée un bank_account.
+> What we have to set when creating a bank_account.
 
 <br>
 
 👉 `BankAccountWhereInput`
-> Ce qu'on a le droit de mettre dans une condition 'where'.
+> What we can use in a 'where' condition.
 
 </div>
 </div>
-
-<!--
-#### Des POJOs, contrairement à d'autres ORMs qui ont tendance à renvoyer des instances de modèles.
-
-### $queryRaw : Je l'ai utilisé pour une requête de recherche de texte pour enlever les caractères accentués via un plugin de Postgres...
-#### Mais attention ici on perdra les vérifications de syntaxe.
--->

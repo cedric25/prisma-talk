@@ -1,5 +1,5 @@
 
-## Génération du client Prisma
+## Generate Prisma client
 
 <div grid="~ cols-2 gap-6" class="relative">
 
@@ -32,22 +32,22 @@ server
 
 <div
   v-if="$slidev.nav.clicks >= 2"
-  class="absolute top-19 left-190 px-4 py-3 border rounded-full text-white bg-orange-300 shadow"
+  class="absolute top-10 left-190 px-4 py-3 border rounded-full text-white bg-orange-300 shadow"
   style="z-index: 1;"
 >
   2
 </div>
 
 <div>
-<div v-click class="mt-5 border p-2 rounded-xl">
-Génère-moi le client Prisma pour ce schéma :
+<div v-click class="-mt-8 border p-2 rounded-xl">
+Give me the Prisma JavaScript client for this schema:
 
 `prisma generate`
 </div>
 
 <div
   v-if="$slidev.nav.clicks >= 3"
-  class="absolute top-80 left-190 px-4 py-3 border rounded-full text-white bg-orange-300 shadow"
+  class="absolute top-70 left-190 px-4 py-3 border rounded-full text-white bg-orange-300 shadow"
   style="z-index: 1;"
 >
   3
@@ -75,7 +75,3 @@ server
 </div>
 
 </div>
-
-<!--
-### Avec ce schéma, on va pouvoir utiliser la CLI de Prisma pour nous générer notre client Prisma.
--->

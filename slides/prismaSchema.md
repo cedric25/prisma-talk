@@ -1,9 +1,9 @@
-## Prisma : Le schéma
+## Prisma schema
 
 <div class="grid mt-4 gap-6 -ml-8 -mr-8" style="grid-template-columns: 0.8fr 1.1fr; overflow: auto">
 
 ```js {all|all|13}
-# schema.prisma
+// schema.prisma
 
 generator client {
   provider = "prisma-client-js"
@@ -22,7 +22,7 @@ model User {
   created_at     DateTime       @default(now())
   updated_at     DateTime       @updatedAt
 
-  @@map(name: "users") // Nom de la table en base
+  @@map(name: "users") // Table name in your DB
 }
 ```
 
@@ -53,17 +53,3 @@ model BankAccount {
 </div>
 
 </div>
-
-<!--
-#### Allez on va rentrer un peu dans le dur du sujet. Et la première chose sur laquelle on tombe avec Prisma, c'est cette syntaxe de schéma.
-
-#### On retrouve au début des petites infos de configuration, notamment avec l'URL de connexion qui viendra d'une variable d'environnment.
-
-#### Puis ici on a un premier exemple de mapping de table. Bon rien de compliqué c'est un syntaxe qui est assez explicite.
-
-#### Une deuxième table ici 'BankAccount'
-
-#### Petite astuce ici : nommer le champ de la même façon dans les deux tables.
-
-#### C'est un exemple ici de one-to-many, le many-to-many est aussi faisable, via une table de relation.
--->

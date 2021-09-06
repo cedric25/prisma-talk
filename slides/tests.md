@@ -1,8 +1,8 @@
-## Des tests ?
+## Some tests?
 
 <div class="mt-8"></div>
 <mdi-numeric-1-box class="inline text-orange-300 text-2xl -mt-1" />
-En mockant complètement le client Prisma.
+By completely mocking Prisma client.
 
 <div class="text-sm mt-2 ml-8">
 👉 &nbsp;
@@ -14,7 +14,7 @@ https://www.prisma.io/docs/guides/testing/unit-testing
 <div class="mt-12"></div>
 
 <mdi-numeric-2-box class="inline text-orange-300 text-2xl -mt-1" />
-En ayant un base de données de test.
+By using a test database.
 
 <div class="text-sm mt-2 ml-8 mb-4">
 👉 &nbsp;
@@ -23,19 +23,12 @@ https://www.prisma.io/docs/guides/testing/integration-testing
 </a>
 </div>
 
- - Injecter l'URL de la base de données de test :
+ - Set your test database URL:
 
 `DATABASE_URL=postgresql://test-user:plop@localhost:5432/freely-test`
 
- - Réinitialiser la base de données entre chaque test.
+ - Clean all tables between each test.
 
 `TRUNCATE TABLE \"${dbSchemaName}\".\"${tablename}\" CASCADE;`
 
-
-<!--
-📍 Problème : ça bloque le run des tests en parallèle...
-
-💡 La technique de passer le test dans une transaction et de ne rien commiter à la fin ?
-
-💡 Créer un schéma par test ?
--->
+More info <a href="https://www.prisma.io/docs/concepts/components/prisma-client/crud#deleting-all-data-with-raw-sql--truncate" target="_blank">here</a>.

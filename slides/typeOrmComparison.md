@@ -1,6 +1,6 @@
-## Chez TypeORM
+## Comparison with TypeORM
 
-### Annotations au-dessus d'attributs de classe
+### Annotations on top of class attributes
 
 <div grid="~ cols-2 gap-6" class="mt-4">
 
@@ -31,7 +31,7 @@ export class User {
 <div class="flex items-center">
 <div>
 <div class="mb-3">
-"Object–relational impedance mismatch" ? 🤯
+"Object–relational impedance mismatch"? 🤯
 </div>
 
 <a href="https://www.prisma.io/docs/concepts/overview/prisma-in-your-stack/is-prisma-an-orm" target="_blank">
@@ -41,9 +41,3 @@ export class User {
 </div>
 
 </div>
-
-<!--
-### Exemple avec d'autres outils comme TypeORM où on va définir une classe JS / TS dans laquelle on va annoter / décorer les propriétés.
-
-### Ça s'inspire d'autres ORM dans d'autres technos, si certains ont connu Java avec *Hibernate*...️
--->

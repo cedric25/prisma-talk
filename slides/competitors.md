@@ -1,10 +1,10 @@
-## Accès à la base de données
+## Interact with your database
 
 <div class="grid h-full pt-10 pb-20 relative -ml-10 -mr-10" style="grid-template-columns: 1.3fr 1.2fr 0.9fr 0.9fr;">
 
 <div v-click class="flex items-center justify-center border-r mr-2">
   <div class="absolute top-13 left-17 text-xl base-chip">
-    👉 Driver natif
+    👉 Native driver
   </div>
   <div>
     <a href="https://github.com/brianc/node-postgres" target="_blank" class="text-3xl">
@@ -36,9 +36,6 @@ await client.query(
         <img src="https://knexjs.org/assets/favicons/favicon-32x32.png" class="inline-block" style="width: 25px;" />
       </a>
       <div class="mt-3">
-        → Un query builder
-      </div>
-      <div class="mt-3">
         <GithubStars count="14.4k" />
       </div>
     </div>
@@ -62,7 +59,7 @@ knex<User>('users')
 
 <div v-click class="flex flex-col content-center items-end -mt-10">
   <div class="absolute -top-14 left-180 text-xl base-chip">
-    👉 ORMs
+    👉 ORM
   </div>
   <div style="width: 150px;">
     <a href="https://github.com/sequelize/sequelize" target="_blank" class="text-2xl">
@@ -70,7 +67,7 @@ knex<User>('users')
       <img src="https://sequelize.org/master/image/brand_logo.png" class="inline-block -mt-2" style="width: 25px;" />
     </a>
     <div class="mt-3 transform scale-90 -ml-2">
-      <GithubStars count="24.6k" />
+      <GithubStars count="24.9k" />
     </div>
     <div class="mt-1">
       <PackageHealth
@@ -85,7 +82,7 @@ knex<User>('users')
       <img src="/images/github-repos/typeorm-logo.png" class="inline-block -mt-1" style="width: 30px;" />
     </a>
     <div class="mt-3 transform scale-90 -ml-2">
-      <GithubStars count="24.9k" />
+      <GithubStars count="25.5k" />
     </div>
     <div class="mt-1">
       <PackageHealth
@@ -100,7 +97,7 @@ knex<User>('users')
       <img src="https://mikro-orm.io/img/favicon.ico" class="inline-block -mt-1" style="width: 22px;" />
     </a>
     <div class="mt-3 transform scale-90 -ml-2">
-      <GithubStars count="3.3k" />
+      <GithubStars count="3.5k" />
     </div>
     <div class="mt-1">
       <PackageHealth
@@ -111,7 +108,22 @@ knex<User>('users')
   </div>
 </div>
 
-<div v-click class="flex flex-col content-center items-center -mt-5">
+<div v-click class="flex flex-col content-center items-center  -mt-6">
+  <div style="min-width: 120px">
+    <a href="https://github.com/mikro-orm/mikro-orm" target="_blank" class="text-2xl">
+      Prisma
+      <img src="https://www.prisma.io/favicon.ico" class="inline-block -mt-1" style="width: 22px;" />
+    </a>
+    <div class="mt-3 transform scale-90 -ml-2">
+      <GithubStars count="15.9k" />
+    </div>
+    <div class="mt-1">
+      <PackageHealth
+        score="98"
+        snyk-link="https://snyk.io/advisor/npm-package/mikro-orm"
+      />
+    </div>
+  </div>
   <div class="mt-10" style="min-width: 120px">
     <a href="https://github.com/bookshelf/bookshelf" target="_blank">
       Bookshelf.js
@@ -122,7 +134,7 @@ knex<User>('users')
     </div>
     <div class="mt-1">
       <PackageHealth
-        score="76"
+        score="74"
         snyk-link="https://snyk.io/advisor/npm-package/bookshelf"
       />
     </div>
@@ -132,7 +144,7 @@ knex<User>('users')
       Objection.js
     </a>
     <div class="mt-3 transform scale-90 -ml-2">
-      <GithubStars count="6.2k" />
+      <GithubStars count="6.3k" />
     </div>
     <div class="mt-1">
       <PackageHealth
@@ -150,14 +162,3 @@ knex<User>('users')
   font-size: 0.7rem !important;
 }
 </style>
-
-<!--
-### pg : On est au plus proche de la bdd, c'est flexible, c'est top en terme de perfs, etc. Mais on est un peu seul, à écrire nos requêtes SQL sans auto-complétion dans l'IDE, sans type-checking, etc.
-
-#### knex, l'entre-deux. Des méthodes helpers pour écrire nos requêtes, on se sent un peu plus en sécurité.
-
-#### Ensuite la famille des ORMs : plus complexe, moins de maîtrise sur le code SQL généré, etc.
-#### Je reviendrai peut-être là-dessus en fin de présentation.
-
-#### knex est parfois la base de l'ORM : Objection.js, MikroORM, Bookshelf.js, etc.
--->

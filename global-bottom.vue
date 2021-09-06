@@ -9,14 +9,14 @@
   >
     <div class="flex">
       <div>
-        Cédric Nicoloso&nbsp; | &nbsp;LyonJS chez
+        Cédric Nicoloso&nbsp; | &nbsp;LyonJS hosted by
         <img
           src="https://georges-public-assets.s3-eu-west-1.amazonaws.com/images/indy/indy-logo.svg"
           height="15"
           class="inline"
           style="height: 16px; margin-bottom: 1px; margin-left: 1px"
         />
-        &nbsp;| &nbsp;juillet 2021
+        &nbsp;| &nbsp;July 2021
       </div>
       <div class="flex-grow">&nbsp;</div>
       <div

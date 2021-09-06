@@ -1,22 +1,22 @@
-## Prisma, qu'est-ce que c'est ?
+## Prisma, what is it?
 
-<div class="text-xl mt-5">
-  Prisma fait partie de <strong>la famille des ORMs</strong>.
-  <span class="text-base ml-1">(Object–relational mapping)</span>
+<div class="text-2xl mt-5">
+  Prisma belongs to <strong>the ORM family</strong>.
+  <span class="text-xl ml-1">(Object–relational mapping)</span>
 </div>
 
 <div class="mt-12">
   <img src="/images/prisma_diagram_2.svg">
 </div>
 
-<div v-click class="absolute top-90 left-100">
+<div v-click class="absolute top-92 left-100">
   <ul>
     <li>Express, Koa, hapi, fastify...</li>
     <li>REST, GraphQL</li>
   </ul>
 </div>
 
-<div v-click class="absolute top-90 left-190">
+<div v-click class="absolute top-92 left-190">
   <ul>
     <li>SQLite</li>
     <li>MySQL</li>
@@ -41,8 +41,3 @@
   padding: 2px 5px;
 }
 </style>
-
-<!--
-#### En gros il va se placer entre notre code serveur et la base de données, et son rôle ça va être de nous :  
-### → faciliter la vie dans ces interactions avec la base de données.
--->

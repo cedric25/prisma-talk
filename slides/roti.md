@@ -1,4 +1,8 @@
-## Un ROTI ?
+## Can I get a ROTI?
+
+<div class="text-xs -mt-2">
+  <i>(Return On Time Invested)</i>
+</div>
 
 <div class="mt-10 flex">
   <div class="flex-1 flex justify-center">
@@ -37,11 +41,3 @@
     <img src="/images/roti/roti-5.png" style="height: 160px;">
   </div>
 </div>
-
-<!--
-### Return On Time Invested
-
-#### 1 -> J'ai perdu mon temps et j'aurais mieux fait de rester chez moi à lire un article de blog sur Prisma.
-
-#### 5 -> Ça valait le coup d'être là et j'ai appris plein de choses en un temps relativement court.
--->

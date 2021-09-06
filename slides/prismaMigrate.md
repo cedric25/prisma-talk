@@ -2,22 +2,21 @@
 
 <div grid="~ cols-2 gap-6" class="relative">
 
-<div v-click>
+<div v-click class="mt-6">
 <div class="mb-3">
 <mdi-numeric-1-box class="inline text-orange-300 text-2xl -mt-1" />
-Je travaille sur ma feature, je fais une modification dans mon `schema.prisma` :
+I'm working on a new feature, I make changes to my `schema.prisma` file:
 </div>
 
-- `prisma format` > formatage + quelques vérifications
-- `prisma db push` > Mise à jour de la structure de la base
-- `prisma generate` > Mise à jour du client Prisma
+- `prisma format` > formats + runs some checks
+- `prisma db push` > updates local database structure + updates Prisma client
 </div>
 
-<div v-click class="-mt-10">
+<div v-click class="-mt-14">
 <mdi-numeric-2-box class="inline text-orange-300 text-2xl -mt-1" />
-Je suis prêt à valider ma feature :
+I'm ready to ship my new feature:
 
-- `prisma migrate dev --name "Ajout de la table des bank_accounts"`
+- `prisma migrate dev --name "Adding bank_accounts table"`
 
 ```js {4-7}
 server
@@ -25,7 +24,7 @@ server
  > node_modules
  > prisma
    > migrations
-     > 20210715144607_ajout_de_la_table_bank_accounts
+     > 20210715144607_adding_bank_accounts_table
          migration.sql
    schema.prisma
  > src
@@ -35,10 +34,10 @@ server
 
 </div>
 
-<div v-click class="-mt-2">
+<div v-click class="mt-4">
 <div class="mb-1">
 <mdi-numeric-3-box class="inline text-orange-300 text-2xl -mt-1" />
-Je réplique les changements :
+I replicate database structure changes to other environments:
 </div>
 
 ```json
@@ -48,7 +47,7 @@ scripts: {
 ```
 
 <div class="mt-2">
-👉 &nbsp;Joue le script SQL + insère une ligne dans la table `_prisma_migrations`.
+👉 &nbsp;Runs the SQL migration script + inserts a new row to `_prisma_migrations` table.
 </div>
 </div>
 

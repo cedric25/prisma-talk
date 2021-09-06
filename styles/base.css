@@ -22,13 +22,13 @@ h2 {
 
 .base-chip {
     font-family: 'Roboto Light', sans-serif;
-    background: rgb(237, 242, 247);
+    background: rgb(204, 209, 215);
     border-radius: 5px;
     padding: 4px 10px;
 }
 .base-chip.green {
-    background-color: rgba(59, 211, 84, 0.08);
+    background-color: rgba(59, 211, 84, 0.35);
 }
 .base-chip.orange {
-    background-color: rgba(211, 138, 59, 0.1);
+    background-color: rgba(211, 138, 59, 0.35);
 }
